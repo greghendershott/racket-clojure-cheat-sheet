@@ -1,0 +1,63 @@
+# -*- mode:org -*-
+#+STARTUP: indent showall
+
+Warning: These are just my personal working notes as I learn Clojure,
+coming from Racket.
+
+* Racket -> Clojure
+Given a Racket function, what's the clojure.core equivalent?
+
+Note: This only includes things with a different name or behavior.
+
+| Racket           | Clojure         | Comment                   |
+|------------------+-----------------+---------------------------|
+| curry            | partial         |                           |
+| curryr           | N/A             |                           |
+| negate           | complement      |                           |
+| andmap           | every?          |                           |
+| ormap            | some            | Returns 1st item not #t   |
+| (length xs)      | (count coll)    | Note: list vs collection. |
+| count            | N/A ?           |                           |
+| append           | concat          |                           |
+| (take xs n)      | (take n coll)   | Note: args reversed       |
+| takef            | take-while      | Note:: args reversed      |
+| hash             | hash-map or {}  |                           |
+| set              | hash-set or #{} |                           |
+| vector           | vector or []    |                           |
+| unless           | when-not        |                           |
+| #t or true       | true            |                           |
+| #f or false      | false           |                           |
+| format           | str             | approximately             |
+| ,                | ~               |                           |
+| unquote          | ~               |                           |
+| ,@               | ~@              |                           |
+| unquote-splicing | ~@              |                           |
+| partition        | N/A             | Clj partition different   |
+| #rx"\\w"         | #"\w"           | Clj regexps ~= px (?)     |
+| #px"\\w"         | #"\w"           | Note \\ vs. \             |
+
+* Clojure -> Racket
+See table above.
+
+Also some clojure.core functions are available in #lang rackjure:
+
+| Function        | Comment                                               |
+|-----------------+-------------------------------------------------------|
+| { k v ... ... } | Dictionary literal.                                   |
+| (dict key)      | Applicable dictionaries.                              |
+| (key dict)      | Applicable dictionaries.                              |
+| ~> and ~>>      | Threading macros. -> is contract combinator in Racket |
+| #(+ % 2)        | #λ(+ % 2) -- #λ() b/c #() is array literal in Racket  |
+| str             |                                                       |
+| swap!           |                                                       |
+| partial         |                                                       |
+|-----------------+-------------------------------------------------------|
+| NOTE:           | The following work with lists not collections.        |
+| NOTE:           | Not yet pushed to public rackjure repo.               |
+|-----------------+-------------------------------------------------------|
+| partition       | Clojure partition unlike Racket's                     |
+| (take<= xs n)   | When < n avail, returns '() instead of erroring.      |
+| juxt            |                                                       |
+| every?          | Alias for andmap                                      |
+| some            | ormap returns #t or #f. some returns first item or #f |
+|                 |                                                       |
