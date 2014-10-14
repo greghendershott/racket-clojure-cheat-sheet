@@ -11,6 +11,8 @@ Note: This only includes things with a different name or behavior.
 
 | Racket           | Clojure         | Comment                    |
 |------------------+-----------------+----------------------------|
+| print            | prn             |                            |
+| display          | print           |                            |
 | curry            | partial         |                            |
 | curryr           | N/A             |                            |
 | negate           | complement      |                            |
@@ -27,15 +29,28 @@ Note: This only includes things with a different name or behavior.
 | unless           | when-not        |                            |
 | #t or true       | true            |                            |
 | #f or false      | false           |                            |
-| format           | str             | approximately              |
+| format           | format          | ~s vs %s. See also: str    |
 | ,                | ~               |                            |
 | unquote          | ~               |                            |
 | ,@               | ~@              |                            |
 | unquote-splicing | ~@              |                            |
 | partition        | N/A             | Clj partition different    |
+| regexp pregexp   | re-matches      | Implicit ^ and $           |
+| regexp pregexp   | re-find         | No implicit ^ and $        |
+| regexp-match*    | re-seq          |                            |
+| regexp-replace*  | replace         |                            |
 | #rx"\\w"         | #"\w"           | Clj regexps ~= px (?)      |
 | #px"\\w"         | #"\w"           | Note double vs. single `\` |
-|                  |                 |                            |
+| string->symbol   | symbol          |                            |
+| symbol->string   | str             |                            |
+| #:keyword        | :keyword        |                            |
+| keyword->string  | name or str     |                            |
+| string->keyword  | keyword         |                            |
+| dict-values      | vals            |                            |
+| hash-values      | vals            |                            |
+| dict-keys        | keys            |                            |
+| hash-keys        | keys            |                            |
+| generics         | protocols       | approximately              |
 
 * Clojure -> Racket
 See table above.
@@ -52,7 +67,8 @@ Also some clojure.core functions are available in [[https://github.com/greghende
 | str             |                                                       |
 | swap!           |                                                       |
 | partial         |                                                       |
-|-----------------+-------------------------------------------------------|
+|                 |                                                       |
+
 
 NOTE: The following work with lists not collections.
 
@@ -66,3 +82,10 @@ NOTE: Not yet pushed to public repo.
 | every?          | Alias for andmap                                      |
 | some            | ormap returns #t or #f. some returns first item or #f |
 |                 |                                                       |
+
+NOTE: Not yet pushed to public repo.
+
+| Function | Comment |
+|----------+---------|
+| get      |         |
+| get-in   |         |
