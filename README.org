@@ -13,6 +13,8 @@ Note: This only includes things with a different name or behavior.
 |------------------+-----------------+----------------------------|
 | print            | prn             |                            |
 | display          | print           |                            |
+| write            | write           |                            |
+| pretty-print     | pprint          | core.pprint                |
 | curry            | partial         |                            |
 | curryr           | N/A             |                            |
 | negate           | complement      |                            |
