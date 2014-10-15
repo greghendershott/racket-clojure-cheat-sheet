@@ -14,7 +14,7 @@ Note: This only includes things with a different name or behavior.
 | print            | prn             |                            |
 | display          | print           |                            |
 | write            | write           |                            |
-| pretty-print     | pprint          | core.pprint                |
+| pretty-print     | pprint          | clojure.pprint             |
 | curry            | partial         |                            |
 | curryr           | N/A             |                            |
 | negate           | complement      |                            |
@@ -24,7 +24,7 @@ Note: This only includes things with a different name or behavior.
 | count            | N/A ?           |                            |
 | append           | concat          |                            |
 | (take xs n)      | (take n coll)   | Note: args reversed        |
-| takef            | take-while      | Note:: args reversed       |
+| takef            | take-while      | Note: args reversed        |
 | hash             | hash-map or {}  |                            |
 | set              | hash-set or #{} |                            |
 | vector           | vector or []    |                            |
