@@ -9,51 +9,55 @@ Given a Racket function, what's the clojure.core equivalent?
 
 Note: This only includes things with a different name or behavior.
 
-| Racket           | Clojure         | Comment                   |
-|------------------+-----------------+---------------------------|
-| begin            | do              |                           |
-| print            | prn             |                           |
-| display          | print           |                           |
-| write            | write           |                           |
-| pretty-print     | pprint          | clojure.pprint            |
-| curry            | partial         |                           |
-| curryr           | N/A             |                           |
-| negate           | complement      |                           |
-| andmap           | every?          |                           |
-| ormap            | some            | Returns 1st item not #t   |
-| (length xs)      | (count coll)    | Note: list vs collection. |
-| count            | N/A ?           |                           |
-| append           | concat          |                           |
-| (take xs n)      | (take n coll)   | Note: args reversed       |
-| takef            | take-while      | Note: args reversed       |
-| hash             | hash-map or {}  |                           |
-| set              | hash-set or #{} |                           |
-| vector           | vector or []    |                           |
-| unless           | when-not        |                           |
-| #t or true       | true            |                           |
-| #f or false      | false           |                           |
-| format           | format          | ~s vs %s. See also: str   |
-| ,                | ~               |                           |
-| unquote          | ~               |                           |
-| ,@               | ~@              |                           |
-| unquote-splicing | ~@              |                           |
-| partition        | N/A             | Clj partition different   |
-| regexp pregexp   | re-matches      | Implicit ^ and $          |
-| regexp pregexp   | re-find         | No implicit ^ and $       |
-| regexp-match*    | re-seq          |                           |
-| regexp-replace*  | replace         |                           |
-| #rx"\\w"         | #"\w"           | Clj regexps ~= px (?)     |
-| #px"\\w"         | #"\w"           | Note 2 vs. 1 backslashes  |
-| string->symbol   | symbol          |                           |
-| symbol->string   | str             |                           |
-| #:keyword        | :keyword        |                           |
-| keyword->string  | name or str     |                           |
-| string->keyword  | keyword         |                           |
-| dict-values      | vals            |                           |
-| hash-values      | vals            |                           |
-| dict-keys        | keys            |                           |
-| hash-keys        | keys            |                           |
-| generics         | protocols       | approximately             |
+| Racket                         | Clojure              | Comment                                |
+|--------------------------------+----------------------+----------------------------------------|
+| begin                          | do                   |                                        |
+| print                          | prn                  |                                        |
+| display                        | print                |                                        |
+| write                          | write                |                                        |
+| pretty-print                   | pprint               | clojure.pprint                         |
+| curry                          | partial              |                                        |
+| curryr                         | N/A                  |                                        |
+| negate                         | complement           |                                        |
+| andmap                         | every?               |                                        |
+| ormap                          | some                 | Returns 1st item not #t                |
+| (length xs)                    | (count coll)         | Note: list vs collection.              |
+| count                          | N/A ?                |                                        |
+| append                         | concat               |                                        |
+| (take xs n)                    | (take n coll)        | Note: args reversed                    |
+| takef                          | take-while           | Note: args reversed                    |
+| hash                           | hash-map or {}       |                                        |
+| set                            | hash-set or #{}      |                                        |
+| vector                         | vector or []         |                                        |
+| unless                         | when-not             |                                        |
+| #t or true                     | true                 |                                        |
+| #f or false                    | false                |                                        |
+| format                         | format               | ~s vs %s. See also: str                |
+| for                            | doseq                | for-effect iteration form              |
+| for/list etc.                  | for                  | Note: specific vs. generic collections |
+| ,                              | ~                    |                                        |
+| unquote                        | ~                    |                                        |
+| ,@                             | ~@                   |                                        |
+| unquote-splicing               | ~@                   |                                        |
+| partition                      | N/A                  | Clj partition different                |
+| regexp pregexp                 | re-matches           | Implicit ^ and $                       |
+| regexp pregexp                 | re-find              | No implicit ^ and $                    |
+| regexp-match*                  | re-seq               |                                        |
+| regexp-replace*                | replace              |                                        |
+| #rx"\\w"                       | #"\w"                | Clj regexps ~= px (?)                  |
+| #px"\\w"                       | #"\w"                | Note 2 vs. 1 backslashes               |
+| string->symbol                 | symbol               |                                        |
+| symbol->string                 | str                  |                                        |
+| #:keyword                      | :keyword             |                                        |
+| keyword->string                | name or str          |                                        |
+| string->keyword                | keyword              |                                        |
+| dict-values                    | vals                 |                                        |
+| hash-values                    | vals                 |                                        |
+| dict-keys                      | keys                 |                                        |
+| hash-keys                      | keys                 |                                        |
+| generics                       | protocols            | approximately                          |
+| (define x (make-parameter 10)) | (def ^:dynamic x 10) |                                        |
+| (parameterize ([x 42]) ___)    | (binding [x 42] ___) |                                        |
 
 * Clojure -> Racket
 See table above.
